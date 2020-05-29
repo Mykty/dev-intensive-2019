@@ -18,8 +18,6 @@ fun String.stripHtml(): String {
 
         while (m.find()) {
             val oldValue = m.group(0)
-            println(oldValue)
-
             res = res.replace(oldValue!!, "")
         }
     }
