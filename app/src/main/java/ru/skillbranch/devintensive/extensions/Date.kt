@@ -43,16 +43,16 @@ enum class TimeUnits {
     DAYS
 }
 
-fun Date.humanizeDiff(date: Date = Date()): String {
+/*fun Date.humanizeDiff(date: Date = Date()): String {
 
     val today = Date().format()
-    val date = date.format()
+    val date2 = date.format()
 
     val todayTime = today.split(" ")[0].split(":")
     val todayDate = today.split(" ")[1].split(".")
 
-    val userTime = date.split(" ")[0].split(":")
-    val userDate = date.split(" ")[1].split(".")
+    val userTime = date2.split(" ")[0].split(":")
+    val userDate = date2.split(" ")[1].split(".")
 
     println(today)
     println(date)
@@ -128,4 +128,4 @@ fun Date.humanizeDiff(date: Date = Date()): String {
     }
 
     return reportTxt
-}
+}*/

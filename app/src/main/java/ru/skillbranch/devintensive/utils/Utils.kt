@@ -4,23 +4,23 @@ import java.util.*
 
 object Utils {
     fun parseFullName(fullName: String?): Pair<String?, String?> {
-        //TODO Fix ME!!!
-
+        if (fullName?.trim()?.length == 0) {
+            return null to null
+        }
         var parts: List<String>? = fullName?.trim()?.split(" ")
         val firstName = parts?.getOrNull(0)
         var lastName = parts?.getOrNull(1)
 //        return Pair(firstName, lastName)
-        if(lastName == null) lastName = "Pupkin"
 
         return firstName to lastName
     }
 
-    fun transliteration(payload: String, divider: String = " "): String {
+    fun transliteration(payload: String): String {
         var nickName = ""
-        for(c in payload){
-            if(c.isUpperCase()) {
+        for (c in payload) {
+            if (c.isUpperCase()) {
                 nickName += toLatinChar(c)
-            }else{
+            } else {
                 val lowerC = toLatinChar(c.toUpperCase()).toLowerCase(Locale.ROOT)
                 nickName += lowerC
             }
@@ -70,7 +70,7 @@ object Utils {
     }
 
     fun toInitials(firstName: String?, lastName: String?): String? {
-        val res = "${firstName?.get(0)}${lastName?.get(0)}"
+        val res = "${firstName?.get(0)?.toUpperCase() ?: null}" + "${lastName?.get(0)?.toUpperCase() ?: ""} "
         return res
     }
 
