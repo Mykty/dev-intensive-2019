@@ -33,11 +33,9 @@ data class User(
         fun lastVisit(value: Date) = apply { lastVisit = value }
         fun isOnline(value: Boolean) = apply { isOnline = value }
 
-        fun build() = User(if(id == "-1") "${++lastId}" else "1", firstName, lastName, avatar, rating, respect, lastVisit, isOnline)
+        fun build() = User(if(id == "-1") "${++lastId}" else "0", firstName, lastName, avatar, rating, respect, lastVisit, isOnline)
 
     }
-
-    var introBit: String
 
     constructor(id: String, firstName: String?, lastName: String?) : this(
         id = id,
@@ -49,10 +47,7 @@ data class User(
     constructor(id: String) : this(id, "John", "Doe")
 
     init {
-        introBit = getIntro()
         println("It's Alive!!! ${if (lastName === "Doe") "His name is $firstName $lastName" else "And his is $firstName $lastName"}")
-
-//        ${getIntro()}
     }
 
     companion object Factory {
@@ -65,17 +60,6 @@ data class User(
             return User(id = "$lastId", firstName = firstName, lastName = lastName)
         }
     }
-
-
-    private fun getIntro() = """
-        tu tu tu ruur !
-        tu tu tu russur ! 
-        tu tu tu ruuasdr !
-        tu tu tu ruurasd !
-        ${"\n"}
-        $firstName $lastName
-        
-        """.trimIndent();
 
     fun printMe() = println(
         """
