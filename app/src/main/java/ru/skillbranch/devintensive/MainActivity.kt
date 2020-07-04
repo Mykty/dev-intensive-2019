@@ -22,6 +22,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var sendBtn: ImageView
 
     lateinit var benderObj: Bender
+    /*
+    Lesson 4: Architecture
+    https://www.youtube.com/watch?v=I6cmLJhvR9o&feature=youtu.be&list=PLVFlo87bKU8KqsJ_O7u2ALN3P1TCivXaZ&t=656
+
+
+     */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,11 +40,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         val status = savedInstanceState?.getString("STATUS") ?: Bender.Status.NORMAL.name
         val question = savedInstanceState?.getString("QUESTIONS")?: Bender.Question.NAME.name
-        val userInput = savedInstanceState?.getString("USER_INPUT")?: ""
+        val countErr = savedInstanceState?.getInt("COUNT")?: 0
 
-        messageEt.setText(userInput)
-
-        benderObj = Bender(Bender.Status.valueOf(status), Bender.Question.valueOf(question))
+        benderObj = Bender(Bender.Status.valueOf(status), Bender.Question.valueOf(question), countErr)
 
         val (r,g, b) = benderObj.status.color
         benderImage.setColorFilter(Color.rgb(r,g,b), PorterDuff.Mode.MULTIPLY)
@@ -62,7 +66,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onSaveInstanceState(outState)
         outState.putString("STATUS", benderObj.status.name)
         outState.putString("QUESTIONS", benderObj.question.name)
-        outState.putString("USER_INPUT", messageEt.text.toString())
+        outState?.putInt("COUNT", benderObj.count)
     }
 
     override fun onStart() {
