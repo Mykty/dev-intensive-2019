@@ -48,7 +48,7 @@ class ProfileActivity : AppCompatActivity() {
             "about" to et_about,
             "repository" to et_repository,
             "rating" to tv_rating,
-            "respect" to tv_recpect
+            "respect" to tv_respect
         )
 
         isEditMode = savedInstanceState?.getBoolean(IS_EDIT_MODE, false) ?: false
